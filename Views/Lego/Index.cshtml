@@ -1,0 +1,144 @@
+@using project56
+@using project56.model
+@model IEnumerable<project56.model.Lego>
+
+@{
+    ViewData["Title"] = "Legos";
+}
+
+<h2>Legos</h2>
+
+<form action="/">
+    <input type="submit" value="Go to Site" />
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div>
+        <p>
+            Find by name: <input type="text" name="searchString" value="@ViewData["currentFilter"]"/>
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["IdSortParm"]" asp-route-currentFilter="@ViewData["CurrentFIlter"]">@Html.DisplayNameFor(model => model.Item_Number)</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.Name)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+                <th>
+                   <a asp-action="Index" asp-route-sortOrder="@ViewData["ThemeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model.Theme)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtheme)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pieces)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Minifigures)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image_URL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GBP_MSRP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.USD_MSRP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EUR_MSRP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Packaging)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Availability)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Theme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtheme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pieces)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minifigures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_URL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GBP_MSRP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USD_MSRP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EUR_MSRP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Packaging)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Availability)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Item_Number">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Item_Number">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Item_Number">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@{
+    PaginatedList<project56.model.Lego> PaginatedModel = Model as PaginatedList<project56.model.Lego>;
+    string prevDisabled = !PaginatedModel.HasPreviousPage ? "disabled" : "";
+    string nextDisabled = !PaginatedModel.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(PaginatedModel.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+   Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(PaginatedModel.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+   Next
+</a>

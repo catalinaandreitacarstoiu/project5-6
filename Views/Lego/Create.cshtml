@@ -1,0 +1,93 @@
+@model project56.model.Lego
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Lego</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Theme" class="control-label"></label>
+                <input asp-for="Theme" class="form-control" />
+                <span asp-validation-for="Theme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subtheme" class="control-label"></label>
+                <input asp-for="Subtheme" class="form-control" />
+                <span asp-validation-for="Subtheme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pieces" class="control-label"></label>
+                <input asp-for="Pieces" class="form-control" />
+                <span asp-validation-for="Pieces" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Minifigures" class="control-label"></label>
+                <input asp-for="Minifigures" class="form-control" />
+                <span asp-validation-for="Minifigures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image_URL" class="control-label"></label>
+                <input asp-for="Image_URL" class="form-control" />
+                <span asp-validation-for="Image_URL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GBP_MSRP" class="control-label"></label>
+                <input asp-for="GBP_MSRP" class="form-control" />
+                <span asp-validation-for="GBP_MSRP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="USD_MSRP" class="control-label"></label>
+                <input asp-for="USD_MSRP" class="form-control" />
+                <span asp-validation-for="USD_MSRP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CAD_MSRP" class="control-label"></label>
+                <input asp-for="CAD_MSRP" class="form-control" />
+                <span asp-validation-for="CAD_MSRP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EUR_MSRP" class="control-label"></label>
+                <input asp-for="EUR_MSRP" class="form-control" />
+                <span asp-validation-for="EUR_MSRP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Packaging" class="control-label"></label>
+                <input asp-for="Packaging" class="form-control" />
+                <span asp-validation-for="Packaging" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Availability" class="control-label"></label>
+                <input asp-for="Availability" class="form-control" />
+                <span asp-validation-for="Availability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
